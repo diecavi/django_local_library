@@ -1,0 +1,28 @@
+{% extends "catalog/base_generic.html" %}
+
+{% block content %}
+  <h1>Book List</h1>
+  {% if book_list %}
+    <ul>
+      {% for book in book_list %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+        {% if perms.catalog.can_mark_returned %}
+        &nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'catalog:book-update' book.id %}">[Update]</a>
+        &nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'catalog:book-delete' book.id %}">[Delete]</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
+
+
+
+<!--
+(for book in object_list) or (for book in book_list), both work
+Within the template you can access the list of books with the template variable 
+named object_list OR book_list (i.e. generically "<the model name>_list").
+-->

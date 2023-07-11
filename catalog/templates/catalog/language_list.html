@@ -1,0 +1,16 @@
+{% extends "catalog/base_generic.html" %}
+
+{% block content %}
+  <h1>Languages List</h1>
+  {% if object_list %}
+    <ul>
+      {% for o in object_list %}
+      <li>
+        <a>{{ o }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no recorded languages in the library.</p>
+  {% endif %}
+{% endblock %}

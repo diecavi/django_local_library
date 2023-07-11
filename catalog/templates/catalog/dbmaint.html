@@ -1,0 +1,28 @@
+{% extends "catalog/base_generic.html" %}
+
+{% block content %}
+
+  <h1>Local Library DB Maintenence</h1>
+  <p>
+    Double check before making any changes
+    <em>our DataBase is of utmost importance</em>!
+  </p>
+  <h2>Select an option</h2>
+  <p>The library has the following tables:</p>
+  <ul>
+    <h3>Authors:</h3>
+    <li><a href="{% url 'catalog:author-create' %}"><strong>Create Authors</strong></a></li>
+    <li><a href="{% url 'catalog:authors' %}"><strong>Update Authors</strong></a></li>
+    <li><a href="{% url 'catalog:authors' %}"><strong>Delete Authors</strong></a></li>
+    <br>
+    <h3>Books</h3>
+    <li><a href="{% url 'catalog:book-create' %}"><strong>Create Books</strong> {{ num_books }}</a></li>
+    <li><a href="{% url 'catalog:books' %}"><strong>Update Books</strong> {{ num_books }}</a></li>
+    <li><a href="{% url 'catalog:books' %}"><strong>Delete Books</strong> {{ num_books }}</a></li>
+    
+  </ul>
+  
+<p>
+  You have visited this page {{ num_visits_2 }} time{{ num_visits_2|pluralize }}.
+</p>
+{% endblock %}
